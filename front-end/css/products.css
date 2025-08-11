@@ -52,6 +52,14 @@ header{
     width: 20px;
     color: rgb(206, 186, 147);
 }
+.header .part1 ul li a:hover{
+    text-decoration: none;
+    color: rgb(88, 120, 74);
+}
+.header .part2 ul li a i:hover{
+    width: 20px;
+    color: rgb(88, 120, 74);
+}
 main{
     width: 100%;
 }
