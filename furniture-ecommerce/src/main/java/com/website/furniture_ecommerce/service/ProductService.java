@@ -2,6 +2,7 @@ package com.website.furniture_ecommerce.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -94,5 +95,47 @@ public class ProductService {
 		}else {
 			throw new OurRuntimeException(null, "id cannot be found");
 		}
+	}
+
+	public ProductListResponse getAllProduct() {
+		ProductListResponse response = new ProductListResponse();
+		List<Product> all = productRepository.findAll();
+		response.setProducts(all);
+		return response;
+	}
+
+	public List<ProductResponseDto> search(String query) {
+		List<Product> products = productRepository.findAll();
+		return products.stream().filter(product -> product.getName().toLowerCase().contains(query.toLowerCase()))
+				.map(product -> {
+					ProductResponseDto response = new ProductResponseDto();
+					response.setId(product.getId());
+					response.setName(product.getName());
+					response.setPrice(product.getPrice());
+					response.setImage(product.getImage());
+					return response;
+				})
+				.collect(Collectors.toList());
+	}
+
+	public List<ProductResponseDto> sortedProduct(String sort) {
+		List<Product> products;
+		
+		if ("priceAsc".equalsIgnoreCase(sort)) {
+			products = productRepository.findAllByOrderByPriceAsc();
+		}else if("priceDesc".equalsIgnoreCase(sort)) {
+			products = productRepository.findAllByOrderByPriceDesc();
+		}else {
+			products = productRepository.findAll();
+		}
+		return products.stream().map(product -> {
+			ProductResponseDto response = new ProductResponseDto();
+			response.setId(product.getId());
+			response.setName(product.getName());
+			response.setPrice(product.getPrice());
+			response.setImage(product.getImage());
+			return response;
+		})
+				.collect(Collectors.toList());
 	}
 }

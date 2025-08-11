@@ -8,4 +8,8 @@ import com.website.furniture_ecommerce.entity.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Integer>{
 	List<Product> findAllByUserId(Integer id);
+
+	List<Product> findAllByOrderByPriceAsc();
+
+	List<Product> findAllByOrderByPriceDesc();
 }
