@@ -20,7 +20,7 @@ function loadOnProducts(){
                 <tr>
                 <td>${element.id}</td>
                 <td>${element.name}</td>
-                <td>${element.price} AZN</td>
+                <td>${element.price} $</td>
                 <td>
                     <img src="${element.image}" style="width: 100px"; height: 80px; object-fit:cover; />
                 </td>

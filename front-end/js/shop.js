@@ -19,6 +19,7 @@ function showProducts(){
 
                 let cardDiv = document.createElement('div');
                 cardDiv.classList.add('card');
+                cardDiv.setAttribute('data-id',element.id);
                 
                 let imgDiv = document.createElement('div');
 
@@ -33,6 +34,16 @@ function showProducts(){
 
                 let addToCardBtn = document.createElement('button');
                 addToCardBtn.textContent = 'Add to card';
+                addToCardBtn.setAttribute('data-id', element.id);
+
+                addToCardBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    let productId = addToCardBtn.getAttribute('data-id');
+                    console.log(productId);
+
+                    addToCart(productId);
+                    
+                })
                 
                 imgDiv.append(image);
                 cardDiv.append(imgDiv);
@@ -73,6 +84,7 @@ function searchProduct(){
 
                 let cardDiv = document.createElement('div');
                 cardDiv.classList.add('card');
+                cardDiv.setAttribute('data-id',element.id);
                 
                 let imgDiv = document.createElement('div');
 
@@ -127,6 +139,7 @@ function sortProducts(){
 
                 let cardDiv = document.createElement('div');
                 cardDiv.classList.add('card');
+                cardDiv.setAttribute('data-id',element.id);
                 
                 let imgDiv = document.createElement('div');
 
@@ -156,3 +169,35 @@ function sortProducts(){
 }
 
 sortProducts()
+
+document.addEventListener('click', (e) => {
+    if (e.target.closest('.card')) {
+        let productId = e.target.closest('.card').getAttribute('data-id');
+        console.log(productId);
+        
+        window.location.href = `productDetail.html?id=${productId}`;
+    }
+})
+
+
+function addToCart(productId){
+
+    const token = localStorage.getItem('token');
+
+    const cart = {
+        productId: productId
+    }
+
+    fetch(`http://localhost:8060/card/add`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cart)
+    })
+    .then(async response => {
+        let message = await response.text();
+        alert(message);
+    })
+}
