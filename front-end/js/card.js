@@ -107,3 +107,24 @@ function deleteFromCart() {
 }
 
 deleteFromCart();
+
+document.querySelector(".btn button").addEventListener('click', () => {
+
+    const token = localStorage.getItem('token');
+
+    fetch(`http://localhost:8060/card/getCard`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(async response => {
+        let data = await response.json();
+        
+        let cartIds = data.map(cart => cart.id);
+        console.log(cartIds);
+       
+        localStorage.setItem('cartIdss', JSON.stringify(cartIds));
+        window.location.href = "checkout.html";
+    })
+})
