@@ -233,8 +233,8 @@ main{
 
 .part2 button{
     font-size: 8px;
-    border: 1px solid rgb(231, 216, 176);
-    background-color: rgb(231, 216, 176);
+    border: 1px solid rgb(243, 239, 226);
+    background-color: rgb(243, 239, 226);
     color: rgb(88, 120, 74);
     padding: 4px;
     cursor: pointer;
@@ -242,9 +242,9 @@ main{
 }
 .part2 button:hover{
     font-size: 8px;
-    border: 1px solid rgb(206, 186, 147);
-    background-color: rgb(206, 186, 147);
-    color: rgb(88, 120, 74);
+    border: 1px solid rgb(88, 120, 74);
+    background-color: rgb(88, 120, 74);
+    color: rgb(243, 239, 226);
     padding: 4px;
     cursor: pointer;
     border-radius: 5px;

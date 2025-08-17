@@ -201,3 +201,7 @@ function addToCart(productId){
         alert(message);
     })
 }
+
+document.getElementById('log-out').addEventListener('click', () => {
+    localStorage.removeItem('token');
+})
