@@ -238,3 +238,22 @@ main {
     margin: 15px 0;
     line-height: 1.5;
 }
+
+.part2 button{
+    font-size: 8px;
+    border: 1px solid rgb(231, 216, 176);
+    background-color: rgb(231, 216, 176);
+    color: rgb(88, 120, 74);
+    padding: 4px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.part2 button:hover{
+    font-size: 8px;
+    border: 1px solid rgb(206, 186, 147);
+    background-color: rgb(206, 186, 147);
+    color: rgb(88, 120, 74);
+    padding: 4px;
+    cursor: pointer;
+    border-radius: 5px;
+}

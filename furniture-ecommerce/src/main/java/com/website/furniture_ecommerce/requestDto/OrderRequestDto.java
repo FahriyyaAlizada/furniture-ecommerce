@@ -1,17 +1,36 @@
 package com.website.furniture_ecommerce.requestDto;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+
 public class OrderRequestDto {
+	@NotNull
 	private Integer cartId;
+	@Size(min = 2, max = 20, message = "Firstname must be min 2 & max 20 characters")
 	private String firstName;
+	@Size(min = 2, max = 20, message = "Lastname must be min 2 & max 20 characters")
 	private String lastName;
+	@NotBlank(message = "Country cannot be blank")
 	private String country;
+	@NotBlank(message = "Address cannot be blank")
 	private String address; 
+	@NotBlank(message = "City cannot be blank")
 	private String city;
+	@NotBlank(message = "Phone cannot be blank")
 	private String phone;
+	@Pattern(regexp = "[a-zA-Z]+@[a-z]+\\.[a-z]{2,4}")
 	private String email;
+	@NotBlank(message = "Card number cannot be blank")
 	private String cartNumber;
+	@NotBlank(message = "Zip code cannot be blank")
 	private String zipCode;
+	@NotBlank(message = "Expiry month cannot be blank")
 	private String expiryMonth;
+	@NotNull(message = "Expiry year cannot be null")
+	@Min(value = 23, message = "Expiry year must be greater than or equal to the current year")
 	private Integer expiryYear;
 	
 	public OrderRequestDto() {

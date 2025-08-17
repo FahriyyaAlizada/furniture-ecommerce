@@ -25,6 +25,7 @@
                     <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                     <li><a href="#"><i class="fa-solid fa-heart"></i></a></li>
                     <li><a href="./card.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li><a href="#"><button id="log-out">Log out</button></a></li>
                 </ul>
             </div>
         </div>
@@ -51,7 +52,7 @@
                         </div>
                         <div class="country">
                             <label for="">Country</label> <br>
-                            <select name="" id="state" style="padding-left: 10px; padding-right: 30px;">
+                            <select name="" id="country" style="padding-left: 10px; padding-right: 30px;">
                                 <option value="">Country</option>
                                 <option value="Turkiye">Turkiye</option>
                                 <option value="England">England</option>
@@ -104,11 +105,11 @@
                     </div>
                     <div class="subtotal">
                         <h4>Subtotal</h4>
-                        <p></p>
+                        <p id="sub-total">0 $</p>
                     </div>
                     <div class="total">
                         <h4>Total</h4>
-                        <p></p>
+                        <p id="total">0 $</p>
                     </div>
                     <hr>
                     <p class="info">Your personal data will be used to support your experience throughout this website, to manage access to your account and for other purposes described in our <b>privacy policy</b></p>
@@ -151,5 +152,6 @@
         </div>
     </footer>
     <script src="./js/checkout.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
